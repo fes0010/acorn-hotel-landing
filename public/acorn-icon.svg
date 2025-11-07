@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Acorn body -->
+  <path d="M50 35 C30 35, 25 45, 25 60 C25 75, 35 90, 50 90 C65 90, 75 75, 75 60 C75 45, 70 35, 50 35 Z" 
+        fill="#6B4423" stroke="#4A2F1A" stroke-width="2"/>
+  
+  <!-- Acorn cap pattern -->
+  <path d="M50 20 C35 20, 20 25, 20 35 C20 40, 22 43, 25 45 L75 45 C78 43, 80 40, 80 35 C80 25, 65 20, 50 20 Z" 
+        fill="#8B5A3C" stroke="#4A2F1A" stroke-width="2"/>
+  
+  <!-- Cap texture lines -->
+  <line x1="25" y1="30" x2="75" y2="30" stroke="#4A2F1A" stroke-width="1.5"/>
+  <line x1="23" y1="35" x2="77" y2="35" stroke="#4A2F1A" stroke-width="1.5"/>
+  <line x1="24" y1="40" x2="76" y2="40" stroke="#4A2F1A" stroke-width="1.5"/>
+  
+  <!-- Vertical pattern on cap -->
+  <line x1="35" y1="22" x2="35" y2="45" stroke="#4A2F1A" stroke-width="1"/>
+  <line x1="42" y1="20" x2="42" y2="45" stroke="#4A2F1A" stroke-width="1"/>
+  <line x1="50" y1="20" x2="50" y2="45" stroke="#4A2F1A" stroke-width="1"/>
+  <line x1="58" y1="20" x2="58" y2="45" stroke="#4A2F1A" stroke-width="1"/>
+  <line x1="65" y1="22" x2="65" y2="45" stroke="#4A2F1A" stroke-width="1"/>
+  
+  <!-- Stem -->
+  <path d="M50 15 Q45 18, 48 20 L52 20 Q55 18, 50 15 Z" 
+        fill="#4A2F1A"/>
+  
+  <!-- Body highlights -->
+  <ellipse cx="40" cy="55" rx="8" ry="12" fill="#8B5A3C" opacity="0.3"/>
+  <ellipse cx="60" cy="65" rx="6" ry="10" fill="#8B5A3C" opacity="0.2"/>
+</svg>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { NAVIGATION_LINKS } from '../../utils/constants';
 import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav';
@@ -6,6 +6,7 @@ import MobileNav from './MobileNav';
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +17,23 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menu on external clicks
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
+
   const handleLinkClick = (href: string) => {
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -24,18 +42,22 @@ export default function Navigation() {
 
   return (
     <nav 
+      ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md' : 'bg-white/10 backdrop-blur-sm'
+        isScrolled ? 'bg-white shadow-md' : 'bg-white shadow-md'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <span className={`text-2xl font-bold ${
-              isScrolled ? 'text-gray-900' : 'text-white'
-            }`}>
-              Acorn Hotel
+          <div className="flex-shrink-0 flex items-center gap-2">
+            <img 
+              src="/acorn-icon.svg" 
+              alt="The Acorn Sagana" 
+              className="w-8 h-8 sm:w-10 sm:h-10"
+            />
+            <span className="text-lg sm:text-2xl font-bold text-gray-900">
+              The Acorn Sagana
             </span>
           </div>
 
@@ -48,9 +70,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden p-2 rounded-md ${
-              isScrolled ? 'text-gray-900' : 'text-white'
-            }`}
+            className="md:hidden p-2 rounded-md text-gray-900 hover:bg-gray-100"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
