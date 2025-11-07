@@ -64,7 +64,6 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <DesktopNav 
             links={NAVIGATION_LINKS} 
-            isScrolled={isScrolled}
             onLinkClick={handleLinkClick}
           />
 
