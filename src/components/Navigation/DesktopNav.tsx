@@ -13,9 +13,7 @@ export default function DesktopNav({ links, isScrolled, onLinkClick }: DesktopNa
         <button
           key={link.id}
           onClick={() => onLinkClick(link.href)}
-          className={`text-sm font-medium transition-colors duration-300 hover:text-primary-600 ${
-            isScrolled ? 'text-gray-700' : 'text-white'
-          }`}
+          className="text-sm font-medium transition-colors duration-300 text-gray-700 hover:text-primary-600"
         >
           {link.label}
         </button>
