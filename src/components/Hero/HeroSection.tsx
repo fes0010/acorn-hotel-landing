@@ -46,23 +46,26 @@ export default function HeroSection() {
     <section 
       id="hero" 
       ref={heroRef}
-      className="relative h-screen flex items-center justify-center overflow-hidden pt-16"
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden pt-16"
     >
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 w-full h-full"
         style={{
           backgroundImage: `url('/images/hero/WhatsApp%20Image%202025-11-01%20at%204.57.18%20PM%20(1).jpeg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
         }}
       >
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-4 w-full max-w-5xl mx-auto">
         <h1 
           ref={titleRef}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 break-words"
         >
           {HOTEL_INFO.name}
         </h1>
@@ -76,13 +79,13 @@ export default function HeroSection() {
         {/* Welcome Notes */}
         <div 
           ref={welcomeRef}
-          className="max-w-3xl mx-auto mb-6 sm:mb-8"
+          className="w-full max-w-3xl mx-auto mb-6 sm:mb-8"
         >
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20">
-            <p className="text-white/95 text-sm sm:text-base md:text-lg mb-3">
+            <p className="text-white/95 text-sm sm:text-base md:text-lg mb-3 break-words">
               Welcome to your perfect destination for memorable stays and celebrations in Sagana
             </p>
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-white/90 text-xs sm:text-sm">
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-6 text-white/90 text-xs sm:text-sm">
               <div className="flex items-center gap-2">
                 <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
@@ -112,21 +115,21 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
           <button
             onClick={handleBookNow}
-            className="bg-primary-600 hover:bg-primary-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
+            className="bg-primary-600 hover:bg-primary-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg w-full sm:w-auto max-w-xs"
           >
             Book Your Stay
           </button>
           <a
             href={`tel:${HOTEL_INFO.contact.phone}`}
-            className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95 border border-white/30 flex items-center gap-2"
+            className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95 border border-white/30 flex items-center justify-center gap-2 w-full sm:w-auto max-w-xs"
           >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
             </svg>
-            {HOTEL_INFO.contact.phone}
+            <span className="whitespace-nowrap">{HOTEL_INFO.contact.phone}</span>
           </a>
         </div>
       </div>
